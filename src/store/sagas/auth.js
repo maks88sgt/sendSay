@@ -1,15 +1,18 @@
-import {all, put, call, takeLatest} from 'redux-saga/effects';
+import {
+  all, call, put, takeLatest,
+} from 'redux-saga/effects';
 import api from 'src/helpers/sendsay';
 
 import {ActionTypes} from 'src/store/constants';
-import {authenticateSuccess, authenticateFailure} from 'src/store/actions/auth';
+import {authenticateFailure, authenticateSuccess} from 'src/store/actions/auth';
 
 export function* authenticateCheckSaga() {
   try {
     yield api.sendsay.request({
       action: 'pong',
     });
-  } catch (error) {
+  }
+  catch (error) {
     if (error.id === 'error/auth/failed') {
       yield call(logoutSaga);
     }
@@ -26,7 +29,7 @@ export function* authenticateSaga({payload}) {
     .then(() => {
       document.cookie = `sendsay_session=${api.sendsay.session}`;
     })
-    .catch((err) => {
+    .catch(err => {
       document.cookie = '';
       console.log('err', err);
     });

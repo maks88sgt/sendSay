@@ -6,10 +6,10 @@ export class AuthStore {
     loginError: null | object;
 
     constructor() {
-        this.isLoading = false;
-        this.sessionKey = '';
-        this.login = '';
-        this.sublogin = '';
-        this.loginError = null;
+      this.isLoading = false;
+      this.sessionKey = '';
+      this.login = '';
+      this.sublogin = '';
+      this.loginError = null;
     }
 }

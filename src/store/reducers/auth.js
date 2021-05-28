@@ -12,7 +12,7 @@ export const initialState = {
 export default {
   auth: handleActions(
     {
-      [ActionTypes.AUTHENTICATE]: (state) => {
+      [ActionTypes.AUTHENTICATE]: state => {
         return {
           ...state,
           loading: true,
@@ -27,7 +27,7 @@ export default {
           sublogin: payload.sublogin,
         };
       },
-      [ActionTypes.AUTHENTICATE_FAILURE]: (state) => {
+      [ActionTypes.AUTHENTICATE_FAILURE]: state => {
         return {
           ...state,
           sessionKey: null,
@@ -35,7 +35,7 @@ export default {
           sublogin: null,
         };
       },
-      [ActionTypes.LOGOUT]: (state) => {
+      [ActionTypes.LOGOUT]: state => {
         return {
           ...state,
           loading: false,

@@ -1,7 +1,7 @@
 export type FieldProps = {
     input: string;
     meta: {
-        error: object,
-        touched: boolean,
-    }
+        error: object;
+        touched: boolean;
+    };
 }

@@ -33,8 +33,8 @@ function LoginPage({history}) {
   const [login, setLogin] = useState('');
   const [sublogin, setSubLogin] = useState('');
   const [password, setPassword] = useState('');
-  const loading = useSelector((state) => state.auth.loading);
-  const isLoggedIn = useSelector((state) => !!state.auth.sessionKey?.length);
+  const loading = useSelector(state => state.auth.loading);
+  const isLoggedIn = useSelector(state => !!state.auth.sessionKey?.length);
   console.log('loading', loading);
 
   useEffect(() => {
@@ -60,13 +60,13 @@ function LoginPage({history}) {
 
   return (
     <Wrapper>
-      <LogoStyled src="/icons/logo.svg" alt="" />
+      <LogoStyled src="/icons/logo.svg" alt=""/>
       <Form onSubmit={onSubmit} action="/">
-        <input value={login} onChange={(e) => setLogin(e.target.value)} placeholder="Логин" />
-        <input value={sublogin} onChange={(e) => setSubLogin(e.target.value)} placeholder="Сублогин" />
-        <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Сублогин" />
+        <input value={login} onChange={e => setLogin(e.target.value)} placeholder="Логин"/>
+        <input value={sublogin} onChange={e => setSubLogin(e.target.value)} placeholder="Сублогин"/>
+        <input value={password} onChange={e => setPassword(e.target.value)} placeholder="Сублогин"/>
         <button type="submit" onClick={onSubmit}>
-          Отправить
+                    Отправить
         </button>
       </Form>
     </Wrapper>

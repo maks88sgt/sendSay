@@ -1,5 +1,5 @@
-import {PersistState} from "redux-persist/es/types";
-import {AuthStore} from "../redux/auth/Auth.store";
+import {PersistState} from 'redux-persist/es/types';
+import {AuthStore} from '../redux/auth/Auth.store';
 
 const initialState = {};
 
@@ -8,11 +8,17 @@ export type AppPersistState = {
     _persist: PersistState;
 };
 
-export const persistMigrations: any = {
-    1: (state: AppPersistState) => {
-        return {
-            ...state,
-            ...initialState,
-        };
-    },
+
+type AppPersistMigrtionsType = {
+    [key in persistMigrations]: (state:AppPersistState) => AppPersistState;
+};
+
+
+export const persistMigrations: AppPersistMigrtionsType= {
+  1: (state: AppPersistState) => {
+    return {
+      ...state,
+      ...initialState,
+    };
+  },
 };

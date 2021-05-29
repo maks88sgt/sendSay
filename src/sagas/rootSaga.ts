@@ -1,6 +1,8 @@
-import {takeLatest} from 'redux-saga';
+import { takeLatest } from "redux-saga/effects";
 import {AuthActions} from '../redux/auth/Auth.actions';
+import {AuthSaga} from "./AuthSaga";
+
 
 export function* rootSaga() {
-  yield takeLatest(AuthActions.SET_USER_DATA, AuthSaga.setUsersData);
+  yield takeLatest (AuthActions.TRY_LOGIN, AuthSaga.tryLogIn);
 }

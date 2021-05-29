@@ -8,10 +8,12 @@ import {PasswordField} from './loginFields/PasswordField';
 import {
   composeValidators, loginValidator, passwordValidator, requiredValidator,
 } from '../../utils/fieldValidators';
-import {LoginFailure} from './LoginFailure';
+import {LoginFailure} from './loginFailure/LoginFailure';
 
 export const LoginPage = props => {
-  const loginLabel = props.isLoading ? <img src={loader} alt='Loader'/> : 'Login';
+    const { isLoading, tryLogIn, loginError } = props;
+    const loginLabel = isLoading ? <img src={loader} alt='Loader'/> : 'Login';
+    const error = loginError ? <LoginFailure loginError={loginError}/> : null;
 
   return (<div className='main'>
     <div className='loginLogo'>
@@ -19,11 +21,11 @@ export const LoginPage = props => {
     </div>
     <div className='loginForm'>
       <div className='loginFormHeader'>API-console</div>
-      <LoginFailure/>
-      <Form onSubmit={() => console.log('OK')}
-        render={({
-          handleSubmit, form, submitting, pristine, values,
-        }) => (
+        {error}
+      <Form onSubmit={(values) => {
+          tryLogIn(values);
+      }}
+        render={({handleSubmit}) => (
           <form onSubmit={handleSubmit}>
             <Field name="login"
               component={LoginField}
@@ -35,7 +37,7 @@ export const LoginPage = props => {
               component={PasswordField}
               validate={composeValidators(passwordValidator, requiredValidator)}
             />
-            <Button>
+            <Button type="submit">
               {loginLabel}
             </Button>
           </form>)}>

@@ -13,7 +13,7 @@ function filterStateProperties(
   return state;
 }
 
-const unnecessaryProperties: string[] = [];
+const unnecessaryProperties: string[] = ['isLoading', 'loginError'];
 
 export const persistTransform = createTransform(
   (inboundState: State) => {

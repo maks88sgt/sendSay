@@ -5,8 +5,9 @@ import {
   BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
 
-import {LoginPage} from './components/login/LoginPage';
 import {configureRedux} from "./config/configureRedux";
+import {AppRouterContainer} from "./containers/AppRouter.container";
+
 const {
   store, persistor, history,
 } = configureRedux();
@@ -17,11 +18,7 @@ function App(): JSX.Element {
     <Router>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <Switch>
-            <Route path="/">
-              <LoginPage/>
-            </Route>
-          </Switch>
+          <AppRouterContainer/>
         </PersistGate>
       </Provider>
     </Router>

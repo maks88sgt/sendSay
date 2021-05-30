@@ -1,7 +1,10 @@
 import {AuthActions} from "../redux/auth/Auth.actions";
-import {put} from "redux-saga/effects";
+import {select, put} from "redux-saga/effects";
 import {AuthStore} from "../redux/auth/Auth.store";
 import Sendsay from 'sendsay-api';
+import {push} from "connected-react-router";
+import {getCredentials} from "../utils/sagaSelectors";
+
 
 export class AuthSaga {
     static* updateStore(partialStore: Partial<AuthStore>) {
@@ -32,13 +35,20 @@ export class AuthSaga {
                 login,
                 sublogin,
                 password,
-                authSuccess: true,
+                isLoading: false,
             });
+            yield put(push('/console'));
         }
         catch (err) {
             document.cookie = '';
             console.log('err', err);
             yield AuthSaga.updateStore({ isLoading: false, loginError: JSON.stringify(err)});
         }
+
+    }
+
+    static* logOut(){
+        yield AuthSaga.updateStore({login: '', sublogin: '', sessionKey: null, password: ''})
+        yield put(push('/login'));
     }
 }

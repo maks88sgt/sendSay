@@ -3,7 +3,11 @@ import meh from '../../../icons/meh.svg';
 
 import {LoginFailureComponent} from '../LoginPage.components';
 
-export const LoginFailure = (props): JSX.Element => {
+export type LoginFailurePropsType = {
+    loginError: string;
+}
+
+export const LoginFailure = (props: LoginFailurePropsType): JSX.Element => {
     const { loginError } = props;
     const spanStyle = {
         fontSize: '12px',

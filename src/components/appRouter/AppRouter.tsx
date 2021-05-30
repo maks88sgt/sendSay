@@ -1,21 +1,28 @@
 import {Redirect, Route, Switch} from "react-router-dom";
 import {LoginPageContainer} from "../../containers/LoginPage.container";
 import React from "react";
-import {ConsolePage} from "../console/ConsolePage";
+import {PrivateRouteContainer} from "../../containers/PrivateRoute.container";
+import {PrivateRoute} from "./PrivateRoute";
+import {ConsolePageContainer} from "../../containers/ConsolePage.container";
 
-export const AppRouter = (props) => {
-    const { authSuccess } = props;
+export type AppRouterPropsType = {
+    sessionKey: string;
+};
+
+export const AppRouter = (props: AppRouterPropsType) => {
+    const { sessionKey } = props;
     return (
-        <Switch>
-            <Route exact path="/login">
-                {authSuccess ? <Redirect to='/console'/> : <LoginPageContainer/>}
-            </Route>
-            <Route exact path="/console">
-                {!authSuccess ? <Redirect to='/login'/> : <ConsolePage/>}
-            </Route>
-            <Route path="*">
-                <Redirect to='/login'/>
-            </Route>
-
-        </Switch>);
+            <Switch>
+                <Route path="/login">
+                    {sessionKey ? <Redirect to='/console'/> : <LoginPageContainer/>}
+                </Route>
+                <Route path="/console">
+                    {sessionKey ?  <ConsolePageContainer/> : <Redirect to='/login'/>}
+                </Route>
+                <PrivateRouteContainer/>
+                <Route path="*">
+                    <Redirect to='/login'/>
+                </Route>
+            </Switch>
+    );
 }

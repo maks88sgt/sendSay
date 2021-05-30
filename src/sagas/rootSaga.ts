@@ -5,4 +5,5 @@ import {AuthSaga} from "./AuthSaga";
 
 export function* rootSaga() {
   yield takeLatest (AuthActions.TRY_LOGIN, AuthSaga.tryLogIn);
+  yield takeLatest (AuthActions.LOGOUT, AuthSaga.logOut);
 }

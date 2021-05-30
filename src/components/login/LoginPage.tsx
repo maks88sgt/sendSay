@@ -10,7 +10,13 @@ import {
 } from '../../utils/fieldValidators';
 import {LoginFailure} from './loginFailure/LoginFailure';
 
-export const LoginPage = props => {
+export type LoginPagePropsType = {
+    isLoading: boolean;
+    loginError: string;
+    tryLogIn: (formData: object)=> void;
+}
+
+export const LoginPage = (props: LoginPagePropsType) => {
     const { isLoading, tryLogIn, loginError } = props;
     const loginLabel = isLoading ? <img src={loader} alt='Loader'/> : 'Login';
     const error = loginError ? <LoginFailure loginError={loginError}/> : null;

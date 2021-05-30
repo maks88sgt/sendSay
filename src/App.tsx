@@ -2,11 +2,14 @@ import React from 'react';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {
-  BrowserRouter as Router, Route, Switch,
+    BrowserRouter,
+    BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
 
 import {configureRedux} from "./config/configureRedux";
+import {AppRouter} from "./components/appRouter/AppRouter";
 import {AppRouterContainer} from "./containers/AppRouter.container";
+
 
 const {
   store, persistor, history,
@@ -15,13 +18,13 @@ const {
 
 function App(): JSX.Element {
   return (
-    <Router>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <AppRouterContainer/>
+            <BrowserRouter >
+                <AppRouterContainer/>
+            </BrowserRouter >
         </PersistGate>
       </Provider>
-    </Router>
   );
 }
 

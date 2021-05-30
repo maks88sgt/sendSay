@@ -1,6 +1,6 @@
 import {State} from "../config/State";
 import { connect } from 'react-redux';
-import {AppRouter} from "../components/appRouter/AppRouter";
+import {PrivateRoute} from "../components/appRouter/PrivateRoute";
 
 const mapStateToProps = (state: State) => {
     return {
@@ -9,6 +9,6 @@ const mapStateToProps = (state: State) => {
 };
 
 const connector = connect(mapStateToProps);
-const connectedComponent = connector(AppRouter);
+const connectedComponent = connector(PrivateRoute);
 
-export { connectedComponent as AppRouterContainer };
+export { connectedComponent as PrivateRouteContainer };

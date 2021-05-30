@@ -1,19 +1,17 @@
 export class AuthStore {
     isLoading: boolean;
-    sessionKey: string;
-    login: string;
-    sublogin: string;
-    password: string;
+    sessionKey: null | string;
+    login: null | string;
+    sublogin: null | string;
+    password: null | string;
     loginError: null | string;
-    authSuccess: boolean;
 
     constructor() {
       this.isLoading = false;
-      this.sessionKey = '';
-      this.login = '';
-      this.sublogin = '';
-      this.password = '';
+      this.sessionKey = null;
+      this.login = null;
+      this.sublogin = null;
+      this.password = null;
       this.loginError = null;
-      this.authSuccess = false;
     }
 }

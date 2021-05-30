@@ -1,7 +1,6 @@
 import {Redirect, Route} from "react-router-dom";
 import React from "react";
-import {AppRouterPropsType} from "./AppRouter";
-import {ConsolePageContainer} from "../../containers/ConsolePage.container";
+import {ConsolePage} from "../console/ConsolePage";
 
 export type PrivateRoutePropsType = {
     sessionKey: string;
@@ -12,7 +11,7 @@ export const PrivateRoute = (props: PrivateRoutePropsType)=> {
     return (
        <Route render={({ location }) =>
            sessionKey ? (
-               <ConsolePageContainer/>
+               <ConsolePage/>
            ) : (
                <Redirect
                    to={{

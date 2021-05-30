@@ -1,7 +1,7 @@
 import React from 'react';
 import meh from '../../../icons/meh.svg';
 
-import {LoginFailureComponent} from '../LoginPage.components';
+import {LoginFailureComponent} from '../../../shared/styledComponents/styledComponents';
 
 export type LoginFailurePropsType = {
     loginError: string;

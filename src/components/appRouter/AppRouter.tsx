@@ -2,8 +2,7 @@ import {Redirect, Route, Switch} from "react-router-dom";
 import {LoginPageContainer} from "../../containers/LoginPage.container";
 import React from "react";
 import {PrivateRouteContainer} from "../../containers/PrivateRoute.container";
-import {PrivateRoute} from "./PrivateRoute";
-import {ConsolePageContainer} from "../../containers/ConsolePage.container";
+import {ConsolePage} from "../console/ConsolePage";
 
 export type AppRouterPropsType = {
     sessionKey: string;
@@ -17,7 +16,7 @@ export const AppRouter = (props: AppRouterPropsType) => {
                     {sessionKey ? <Redirect to='/console'/> : <LoginPageContainer/>}
                 </Route>
                 <Route path="/console">
-                    {sessionKey ?  <ConsolePageContainer/> : <Redirect to='/login'/>}
+                    {sessionKey ?  <ConsolePage/> : <Redirect to='/login'/>}
                 </Route>
                 <PrivateRouteContainer/>
                 <Route path="*">

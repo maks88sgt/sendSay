@@ -15,5 +15,4 @@ export const LoginField = (props: FieldProps): JSX.Element => {
     <label style={errorColor}>Login</label>
     <input {...input} type="text" placeholder="Login" style={errorBorder}/>
   </div>);
-
 };

@@ -8,7 +8,7 @@ export class HistorySaga {
         yield put(HistoryActions.updateStore(partialStore));
     }
 
-    static* saveRequest (action) {
+    static* saveRequest(action) {
         const historyItem = action.payload;
         const requestName = getHistoryItemName(historyItem);
         if (historyItem) {
@@ -23,6 +23,17 @@ export class HistorySaga {
             }
         }
     }
+
+    static* deleteRequest(action) {
+        const historyItemName = action.payload;
+        if (historyItemName) {
+            const currentHistory: HistoryItemType[] = yield select(getCurrentHistory);
+            const newHistoryItemIndex = currentHistory.findIndex(item => item.name === historyItemName);
+            currentHistory.splice(newHistoryItemIndex, 1);
+            yield HistorySaga.updateStore({current: [...currentHistory]});
+        }
+    }
+
 }
 
 const getHistoryItemName = (historyItem: HistoryItemType): string => {

@@ -1,13 +1,14 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import dots from './../../../icons/dots.svg';
 import red from './../../../icons/red.svg';
 import green from './../../../icons/green.svg';
 import {HistoryItemDropdown} from "./HistoryItemDropdown";
 import ReactDOM from 'react-dom';
 import {Portal} from "./Portal";
+import {HistoryItemDropdownContainer} from "../../../containers/HistoryItemDropdown.container";
 
 export type HistoryItemPropsType = {
-    name: string;
+    name?: string;
     success:boolean;
     index: number;
 }
@@ -19,7 +20,7 @@ export const HistoryItem = (props: HistoryItemPropsType) => {
 
     useEffect(() => {
         document.body.addEventListener("click", event => {
-            if (ref.current.contains(event.target)) {
+            if (ref.current && ref.current.contains(event.target)) {
                 return;
             }
             setIsDropdownOpen(false);
@@ -51,7 +52,7 @@ export const HistoryItem = (props: HistoryItemPropsType) => {
                 <div className={'historyItem_name'}>{name}</div>
                 <img src={dots} alt={'actions'}/>
                 {isDropDownOpen && <Portal querySelector={`.historyItem--${index}`}>
-                    <HistoryItemDropdown dropDownCoords={dropDownCoords} dropDownWidth={dropDownWidth}/>
+                    <HistoryItemDropdownContainer dropDownCoords={dropDownCoords} dropDownWidth={dropDownWidth} name={name}/>
                 </Portal>
                 }
             </div>

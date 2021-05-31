@@ -12,4 +12,5 @@ export function* rootSaga() {
   yield takeLatest (AuthActions.LOGOUT, AuthSaga.logOut);
   yield takeLatest (ConsoleActions.SEND_REQUEST, ConsoleSaga.sendRequest);
   yield takeLatest (HistoryActions.SAVE_REQUEST_HISTORY_ITEM, HistorySaga.saveRequest);
+  yield takeLatest (HistoryActions.DELETE_REQUEST_HISTORY_ITEM, HistorySaga.deleteRequest);
 }

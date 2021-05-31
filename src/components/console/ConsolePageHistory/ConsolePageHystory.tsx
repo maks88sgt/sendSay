@@ -11,7 +11,7 @@ export const ConsolePageHistory = (props: ConsolePageHistoryPropsType)=> {
     const { historyItems } = props;
     return (<div className={'consoleHistory'}>
         <div className={'consoleHistory_list'}>
-            {Array.isArray(historyItems) && historyItems.map((item, index) => <HistoryItem key={item.name} index={index} name={item.name as string} success={item.success}/>)}
+            {Array.isArray(historyItems) && historyItems.map((item, index) => <HistoryItem key={item.name} index={index} {...item}/>)}
         </div>
 
         <div className={'consoleHistory_clearButton'}><div/><img src={cross}/></div>

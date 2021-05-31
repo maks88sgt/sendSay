@@ -7,6 +7,7 @@ function filterStateProperties(
 ): Partial<State> {
   unnecessaryProperties.forEach(property => {
     if (Object.prototype.hasOwnProperty.call(state, property)) {
+      // @ts-ignore
       delete state[property];
     }
   });
@@ -15,7 +16,9 @@ function filterStateProperties(
 
 const unnecessaryProperties: string[] = ['isLoading', 'loginError', 'authSuccess'];
 
+
 export const persistTransform = createTransform(
+    // @ts-ignore
   (inboundState: State) => {
     return filterStateProperties({...inboundState}, unnecessaryProperties);
   },

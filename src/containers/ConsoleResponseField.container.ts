@@ -4,6 +4,7 @@ import {ConsoleResponseField} from "../components/console/ConsoleFields/ConsoleR
 
 const mapStateToProps = (state: State) => {
     return {
+        requestSuccess: state.console.requestSuccess,
         response: state.console.response,
     };
 };

@@ -1,27 +1,25 @@
 import React from "react";
-import {FieldProps} from "../../login/loginFields/FieldPropType";
-import {JSONformater} from "../../../utils/JSONformater";
+import {FieldInputProps, FieldMetaState} from "react-final-form";
 
 export type ConsoleResponseFieldPropsType = {
-    response: null | string;
-    meta: {
-        error: string,
-        touched: boolean,
-    };
+    requestSuccess: boolean;
+    response: string | null;
+    input: FieldInputProps<string>;
+    meta:  FieldMetaState<any>;
 }
 
 export const ConsoleResponseField = (props: ConsoleResponseFieldPropsType): JSX.Element => {
-    const {response, meta} = props;
+    const {requestSuccess, response, input, meta} = props;
 
     const errorColor: React.CSSProperties = {};
     const errorBorder: React.CSSProperties = {};
-    if (meta.error && meta.touched) {
+    if ((meta.error && meta.touched) || (response && !requestSuccess)) {
         errorColor.color = 'red';
         errorBorder.borderColor = 'red';
     }
 
     return (<>
-        <span style={errorColor} className={'consoleBody_leftPart_label'}>Request</span>
-        <textarea style={errorBorder} className={'consoleBody_leftPart_textarea'}>{JSONformater(response)}</textarea>
+        <span style={errorColor} className={'consoleBody_rightPart_label'}>Response</span>
+        <textarea {...input} readOnly={true} style={errorBorder} className={'consoleBody_rightPart_textarea'}/>
     </>);
 };

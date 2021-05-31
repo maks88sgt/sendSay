@@ -11,6 +11,7 @@ const mapStateToProps = (state: State) => {
         isFetching: state.console.isFetching,
         request: state.console.request,
         response: state.console.response,
+        requestSuccess: state.console.requestSuccess,
     };
 };
 

@@ -14,9 +14,11 @@ import {persistMigrations} from './persistMigrations';
 import {persistTransform} from './persistTransform';
 import {rootSaga} from '../sagas/rootSaga';
 import {consoleReducer} from "../redux/console/Console.reducer";
+import {MigrationManifest} from "redux-persist/es/types";
 
 
 function getComposer() {
+  // @ts-ignore
   const devtoolsComposer = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'];
   if (devtoolsComposer) {
     return devtoolsComposer({trace: true, traceLimit: 25});
@@ -69,7 +71,7 @@ function makeReducers(history: BrowserHistory) {
       blacklist: ['router'],
       transforms: [persistTransform],
       stateReconciler: autoMergeLevel2,
-      migrate: createMigrate(persistMigrations),
+      migrate: createMigrate(persistMigrations as unknown as MigrationManifest),
     },
     rootReducer
   );

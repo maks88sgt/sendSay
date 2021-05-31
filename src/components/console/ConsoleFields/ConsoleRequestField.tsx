@@ -12,7 +12,7 @@ export const ConsoleRequestField = (props: FieldProps): JSX.Element => {
     }
 
     return (<>
-        <span style={errorColor} className={'consoleBody_rightPart_label'}>Response</span>
-        <textarea readOnly={true} {...input} className={'consoleBody_rightPart_textarea'}/>
+        <span style={errorColor} className={'consoleBody_leftPart_label'}>Request</span>
+        <textarea {...input} className={'consoleBody_leftPart_textarea'}/>
     </>);
 };

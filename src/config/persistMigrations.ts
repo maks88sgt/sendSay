@@ -9,7 +9,9 @@ export type AppPersistState = {
 };
 
 
+
 type AppPersistMigrtionsType = {
+    // @ts-ignore
     [key in persistMigrations]: (state:AppPersistState) => AppPersistState;
 };
 

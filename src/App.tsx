@@ -3,11 +3,9 @@ import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {
     BrowserRouter,
-    BrowserRouter as Router, Route, Switch,
 } from 'react-router-dom';
 
 import {configureRedux} from "./config/configureRedux";
-import {AppRouter} from "./components/appRouter/AppRouter";
 import {AppRouterContainer} from "./containers/AppRouter.container";
 
 
@@ -17,10 +15,13 @@ const {
 
 
 function App(): JSX.Element {
-  return (
+
+// @ts-ignore
+    return (
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
             <BrowserRouter >
+
                 <AppRouterContainer/>
             </BrowserRouter >
         </PersistGate>

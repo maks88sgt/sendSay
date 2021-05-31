@@ -16,12 +16,12 @@ export class ConsoleSaga {
         const sendsay: Sendsay = new Sendsay({auth: {...credentials}});
         try {
             const response: Response = yield call(sendsay.request, JSON.parse(request));
-            yield ConsoleSaga.updateStore({isFetching: false, response: JSON.stringify(response, null, 4), responseSuccess: true});
+            yield ConsoleSaga.updateStore({isFetching: false, response: JSON.stringify(response, null, 4), requestSuccess: true});
         } catch (err) {
             yield ConsoleSaga.updateStore({
                 isFetching: false,
                 response: JSON.stringify(err, null, 4),
-                responseSuccess: false
+                requestSuccess: false
             });
         }
 

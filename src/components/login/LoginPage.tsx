@@ -34,13 +34,13 @@ export const LoginPage = (props: LoginPagePropsType) => {
         render={({handleSubmit}) => (
           <form onSubmit={handleSubmit}>
             <Field name="login"
-              component={LoginField}
+              component={LoginField as any}
               validate={composeValidators(loginValidator, requiredValidator)}
             />
             <Field name="sublogin"
-              component={SubLoginField}/>
+              component={SubLoginField as any}/>
             <Field name="password"
-              component={PasswordField}
+              component={PasswordField as any}
               validate={composeValidators(passwordValidator, requiredValidator)}
             />
             <Button type="submit" className={'loginPage_button'}>

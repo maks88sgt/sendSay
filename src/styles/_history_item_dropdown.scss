@@ -1,9 +1,39 @@
 .historyItemDropdown {
   display: flex;
   flex-direction: column;
+  align-items: center;
   background: #FFFFFF;
+  position: absolute;
+  margin-left: 25px;
+  margin-right: 25px;
   z-index: 2;
-  position: fixed;
-  width: inherit;
-  padding-left: 25px;
+  cursor: pointer;
+  width: 75px;
+
+  &--run {
+    height: 45px;
+    width: 100%;
+    padding-left:15px;
+    padding-top: 15px;
+  }
+
+  &--copy {
+    height: 45px;
+    padding-top: 15px;
+  }
+
+  &--copy:hover {
+    background: #0055FB;
+    color: white;
+  }
+
+  &--delete {
+    height: 45px;
+    padding-top: 15px;
+  }
+
+  &--delete:hover {
+    background: #CF2C00;
+    color: white;
+  }
 }

@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
 import dots from './../../../icons/dots.svg';
 import red from './../../../icons/red.svg';
 import green from './../../../icons/green.svg';
@@ -22,7 +22,10 @@ export const HistoryItem = (props: HistoryItemPropsType) => {
     }, []);
 
     const [ isDropDownOpen, setIsDropdownOpen ] = useState(false);
-    const dropDown = isDropDownOpen && ReactDOM.createPortal(<HistoryItemDropdown/>, document.querySelector(`.historyItem--${index}`));
+    const container = document.querySelector(`.historyItem--${index}`);
+    const portal = container && ReactDOM.createPortal(<HistoryItemDropdown/>, container);
+    const dropDown = isDropDownOpen && portal;
+    //const dropDown = isDropDownOpen && <HistoryItemDropdown/>;
 
     return (<div ref={div} className={`historyItem_container`} onClick={()=>setIsDropdownOpen(!isDropDownOpen)}>
         <div className={`historyItem--${index}`}>
@@ -31,8 +34,9 @@ export const HistoryItem = (props: HistoryItemPropsType) => {
                 <div className={'historyItem_name'}>{name}</div>
                 <img src={dots} alt={'actions'}/>
             </div>
+            {dropDown}
         </div>
-        {dropDown}
+
     </div>);
 
 }

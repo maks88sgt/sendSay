@@ -9,3 +9,5 @@ export const getCredentials = (state: State) => {
 };
 
 export const getSessionKey = (state:State) => state.auth.sessionKey;
+
+export const getCurrentHistory = (state:State) => state.history.current;

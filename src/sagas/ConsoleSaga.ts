@@ -3,6 +3,7 @@ import Sendsay from 'sendsay-api';
 import {ConsoleStore} from "../redux/console/Console.store";
 import {ConsoleActions} from "../redux/console/Console.actions";
 import {getCredentials} from "../utils/sagaSelectors";
+import {HistoryActions} from "../redux/history/History.actions";
 
 export class ConsoleSaga {
     static* updateStore(partialStore: Partial<ConsoleStore>) {
@@ -16,13 +17,18 @@ export class ConsoleSaga {
         const sendsay: Sendsay = new Sendsay({auth: {...credentials}});
         try {
             const response: Response = yield call(sendsay.request, JSON.parse(request));
-            yield ConsoleSaga.updateStore({isFetching: false, response: JSON.stringify(response, null, 4), requestSuccess: true});
+            const stringifyResponse = JSON.stringify(response);
+            yield ConsoleSaga.updateStore({isFetching: false, response: stringifyResponse, requestSuccess: true});
+            yield put(HistoryActions.saveRequestHistoryItem({request: request, response: stringifyResponse, success: true}));
         } catch (err) {
+            const response = JSON.stringify(err, null, 4);
+
             yield ConsoleSaga.updateStore({
                 isFetching: false,
-                response: JSON.stringify(err, null, 4),
-                requestSuccess: false
+                response: response,
+                requestSuccess: false,
             });
+            yield put(HistoryActions.saveRequestHistoryItem({request: request, response: response, success: false}));
         }
 
     }

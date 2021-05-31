@@ -24,7 +24,7 @@ export const ConsolePageConsole = (props: ConsolePageConsolePropsType) => {
     const sendLabel = isFetching ? <img src={loader} alt='Loader'/> : 'Send';
 
     return (
-        <Form onSubmit={(values) => sendRequest(values.request)}
+        <Form onSubmit={(values) => sendRequest(JSONformater(values.request))}
               initialValues={{request}}
               render={({handleSubmit, form, values}) => {
                   return (

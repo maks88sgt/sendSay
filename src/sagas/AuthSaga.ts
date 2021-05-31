@@ -29,6 +29,7 @@ export class AuthSaga {
                 .then(() => {
                     document.cookie = `sendsay_session=${sendsay.session}`;
                 });
+            console.log(sendsay);
 
             yield AuthSaga.updateStore({
                 sessionKey: sendsay.session,

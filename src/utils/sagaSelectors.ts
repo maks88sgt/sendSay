@@ -7,3 +7,5 @@ export const getCredentials = (state: State) => {
         sublogin: state.auth.sublogin
     };
 };
+
+export const getSessionKey = (state:State) => state.auth.sessionKey;

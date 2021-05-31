@@ -29,3 +29,12 @@ export const passwordValidator = (str: string): undefined | string => {
 
 export const requiredValidator = (value: string): undefined | string => (value ? undefined : 'Required');
 
+export const JSONValidator = (value:string):undefined | string => {
+  try {
+    JSON.parse(value);
+    return undefined;
+  } catch {
+    return 'Invalid JSON'
+  }
+}
+

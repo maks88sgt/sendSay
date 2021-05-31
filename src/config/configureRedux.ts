@@ -13,6 +13,7 @@ import {authReducer} from '../redux/auth/Auth.reducer';
 import {persistMigrations} from './persistMigrations';
 import {persistTransform} from './persistTransform';
 import {rootSaga} from '../sagas/rootSaga';
+import {consoleReducer} from "../redux/console/Console.reducer";
 
 
 function getComposer() {
@@ -57,6 +58,7 @@ function makeReducers(history: BrowserHistory) {
   const rootReducer = combineReducers({
     router: connectRouter(history),
     auth: authReducer,
+    console: consoleReducer,
   });
 
   return persistReducer<any>(

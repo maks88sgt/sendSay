@@ -9,7 +9,7 @@ import {ConsoleRequestField} from '../consoleFields/ConsoleRequestField';
 import {ConsoleResponseField} from '../consoleFields/ConsoleResponseField';
 import dots from './../../../icons/dots.svg';
 import format from './../../../icons/format.svg';
-import {Button} from '../../../shared/styledComponents/styledComponents';
+import {Button} from '@shared/styledComponents/styledComponents';
 import {JSONformater} from '../../../utils/JSONformater';
 
 export type ConsolePageConsolePropsType = {

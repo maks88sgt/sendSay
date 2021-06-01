@@ -1,8 +1,8 @@
 import {AuthStore} from './Auth.store';
-import {Action} from 'redux';
-import {AuthActions} from "./Auth.actions";
+import {AuthActions} from './Auth.actions';
+import {AuthActionsType} from "../actionsTypes";
 
-export const authReducer = (state = new AuthStore(), action: Action) => {
+export const authReducer = (state = new AuthStore(), action: AuthActionsType<any>) => {
   switch (action.type) {
     case AuthActions.UPDATE_STORE:
       return {

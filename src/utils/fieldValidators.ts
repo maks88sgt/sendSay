@@ -1,4 +1,4 @@
-export const composeValidators = (...validators: any[] ) => (value: string) =>
+export const composeValidators = (...validators: any[]) => (value: string) =>
   validators.reduce((error: object, validator: (value: string) => undefined | string) => error || validator(value), undefined);
 
 
@@ -29,12 +29,13 @@ export const passwordValidator = (str: string): undefined | string => {
 
 export const requiredValidator = (value: string): undefined | string => (value ? undefined : 'Required');
 
-export const JSONValidator = (value:string):undefined | string => {
+export const JSONValidator = (value: string): undefined | string => {
   try {
     JSON.parse(value);
     return undefined;
-  } catch {
-    return 'Invalid JSON'
   }
-}
+  catch {
+    return 'Invalid JSON';
+  }
+};
 

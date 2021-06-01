@@ -2,8 +2,8 @@ import {createTransform} from 'redux-persist';
 import {State} from './State';
 
 function filterStateProperties(
-    state: State,
-    unnecessaryProperties: string[]
+  state: State,
+  unnecessaryProperties: string[]
 ): Partial<State> {
   unnecessaryProperties.forEach(property => {
     if (Object.prototype.hasOwnProperty.call(state, property)) {
@@ -18,7 +18,7 @@ const unnecessaryProperties: string[] = ['isLoading', 'loginError', 'authSuccess
 
 
 export const persistTransform = createTransform(
-    // @ts-ignore
+  // @ts-ignore
   (inboundState: State) => {
     return filterStateProperties({...inboundState}, unnecessaryProperties);
   },

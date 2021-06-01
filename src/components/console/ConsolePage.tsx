@@ -1,15 +1,15 @@
-import React from "react";
-import {ConsolePageHeaderContainer} from "../../containers/ConsolePageHeader.container";
-import {ConsolePageConsoleContainer} from "../../containers/ConsolePageConsole.container";
-import {ConsolePageHistoryContainer} from "../../containers/ConsolePageHistory.container";
+import React from 'react';
+import {ConsolePageHeaderContainer} from './consoleHeader/ConsoleHeader.container';
+import {ConsolePageConsoleContainer} from './consoleBody/ConsoleBody.container';
+import {ConsolePageHistoryContainer} from './consoleHistory/ConsoleHistory.container';
 
 export const ConsolePage = () => {
 
-    return (
-        <>
-           <ConsolePageHeaderContainer/>
-            <ConsolePageHistoryContainer/>
-            <ConsolePageConsoleContainer/>
-        </>
-    );
-}
+  return (
+    <>
+      <ConsolePageHeaderContainer/>
+      <ConsolePageHistoryContainer/>
+      <ConsolePageConsoleContainer/>
+    </>
+  );
+};

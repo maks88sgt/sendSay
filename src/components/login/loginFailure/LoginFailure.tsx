@@ -8,11 +8,11 @@ export type LoginFailurePropsType = {
 }
 
 export const LoginFailure = (props: LoginFailurePropsType): JSX.Element => {
-    const { loginError } = props;
-    const spanStyle = {
-        fontSize: '12px',
-        opacity: '0.5',
-    }
+  const {loginError} = props;
+  const spanStyle = {
+    fontSize: '12px',
+    opacity: '0.5',
+  };
   return (
     <LoginFailureComponent>
       <img className='failureIcon' src={meh} alt='error'/>

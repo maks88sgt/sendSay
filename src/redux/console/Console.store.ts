@@ -1,5 +1,5 @@
 export class ConsoleStore {
-    request: null |string;
+    request: null | string;
     response: null | string;
     isFetching: boolean;
     requestSuccess: boolean;

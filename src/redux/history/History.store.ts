@@ -2,7 +2,7 @@ export class HistoryStore {
     current: HistoryItemType[];
 
     constructor() {
-        this.current = [];
+      this.current = [];
     }
 }
 

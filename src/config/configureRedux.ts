@@ -13,9 +13,9 @@ import {authReducer} from '../redux/auth/Auth.reducer';
 import {persistMigrations} from './persistMigrations';
 import {persistTransform} from './persistTransform';
 import {rootSaga} from '../sagas/rootSaga';
-import {consoleReducer} from "../redux/console/Console.reducer";
-import {MigrationManifest} from "redux-persist/es/types";
-import {historyReducer} from "../redux/history/History.reducer";
+import {consoleReducer} from '../redux/console/Console.reducer';
+import {MigrationManifest} from 'redux-persist/es/types';
+import {historyReducer} from '../redux/history/History.reducer';
 
 
 function getComposer() {

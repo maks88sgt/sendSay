@@ -1,6 +1,5 @@
-import {Action} from 'redux';
-
-import {AuthStore} from "./Auth.store";
+import {AuthStore} from './Auth.store';
+import {AuthActionsType} from "../actionsTypes";
 
 export class AuthActions {
     static PREFIX = 'AUTH_';
@@ -9,23 +8,23 @@ export class AuthActions {
     static TRY_LOGIN = `${AuthActions.PREFIX}TRY_LOGIN`;
     static LOGOUT = `${AuthActions.PREFIX}LOGOUT`;
 
-    static updateStore = (partialStore: Partial<AuthStore>): Action  => {
-        return {
-            type: AuthActions.UPDATE_STORE,
-            payload: partialStore,
-        };
+    static updateStore = (partialStore: Partial<AuthStore>): AuthActionsType<Partial<AuthStore>> => {
+      return {
+        type: AuthActions.UPDATE_STORE,
+        payload: partialStore,
+      };
     }
 
-    static tryLogIn = (loginData: Partial<AuthStore>): Action  => {
-        return {
-            type: AuthActions.TRY_LOGIN,
-            payload: loginData,
-        };
+    static tryLogIn = (loginData: Partial<AuthStore>): AuthActionsType<Partial<AuthStore>> => {
+      return {
+        type: AuthActions.TRY_LOGIN,
+        payload: loginData,
+      };
     }
 
-    static logOut = (): Action  => {
-        return {
-            type: AuthActions.LOGOUT,
-        };
+    static logOut = (): AuthActionsType<Partial<AuthStore>> => {
+      return {
+        type: AuthActions.LOGOUT,
+      };
     }
 }

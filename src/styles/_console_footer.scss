@@ -10,13 +10,13 @@
   padding-right: 15px;
   padding-left: 15px;
 
-    &_formatter{
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+  &_formatter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
-      img {
-        margin-right: 10px;
-      }
+    img {
+      margin-right: 10px;
     }
+  }
 }

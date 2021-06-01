@@ -9,14 +9,13 @@ export type AppPersistState = {
 };
 
 
-
 type AppPersistMigrtionsType = {
     // @ts-ignore
-    [key in persistMigrations]: (state:AppPersistState) => AppPersistState;
+    [key in persistMigrations]: (state: AppPersistState) => AppPersistState;
 };
 
 
-export const persistMigrations: AppPersistMigrtionsType= {
+export const persistMigrations: AppPersistMigrtionsType = {
   1: (state: AppPersistState) => {
     return {
       ...state,
